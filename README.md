@@ -17,6 +17,14 @@ npm run build    # typecheck + production build
 Then open the printed local URL. **Click "Play drone" first** — browsers only
 allow audio to start in response to a user gesture.
 
+## Live site (GitHub Pages)
+
+A GitHub Actions workflow (`.github/workflows/deploy.yml`) builds the app and
+publishes it to GitHub Pages on every push. **One-time setup:** in the repo,
+go to **Settings → Pages → Build and deployment → Source** and choose
+**"GitHub Actions"**. After the next push the site is served at
+`https://<your-username>.github.io/<repo>/`.
+
 ## What's here
 
 - **Phase 1 — Drone.** A tanpura-style drone (Sa + Pa, with Sa reinforced an
