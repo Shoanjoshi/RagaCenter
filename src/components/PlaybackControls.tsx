@@ -11,6 +11,9 @@ interface PlaybackControlsProps {
   playingPhrase: PhraseKind | null;
   onPlay: (phrase: PhraseKind) => void;
   onStop: () => void;
+  /** When true, render only the tempo slider (the Compare view supplies its
+   *  own per-raga play buttons, but shares this one tempo control). */
+  tempoOnly?: boolean;
 }
 
 const PHRASES: { kind: PhraseKind; label: string }[] = [
@@ -25,11 +28,13 @@ export function PlaybackControls({
   playingPhrase,
   onPlay,
   onStop,
+  tempoOnly = false,
 }: PlaybackControlsProps) {
   const isPlaying = playingPhrase !== null;
 
   return (
     <div className="playback-controls">
+      {!tempoOnly && (
       <div className="phrase-buttons">
         {PHRASES.map(({ kind, label }) => (
           <button
@@ -48,6 +53,7 @@ export function PlaybackControls({
           ■ Stop
         </button>
       </div>
+      )}
 
       <div className="control-row tempo-row">
         <label htmlFor="tempo">Tempo</label>

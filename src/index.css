@@ -317,6 +317,162 @@ button:disabled {
   box-shadow: 0 0 10px 1px rgba(240, 168, 48, 0.7);
 }
 
+/* ---- View tabs (Explore / Compare) ---- */
+.view-tabs {
+  display: flex;
+  gap: 0.4rem;
+  margin: 0 0 1.25rem;
+  justify-content: center;
+}
+
+.view-tabs button {
+  padding: 0.45rem 1.4rem;
+  border-radius: 999px;
+  background: var(--bg-panel);
+  color: var(--ink-dim);
+}
+
+.view-tabs button.active {
+  background: var(--accent);
+  color: #2a1f0a;
+  border-color: var(--accent);
+  font-weight: 700;
+}
+
+/* ---- Comparison: membership colours (shared / only A / only B) ---- */
+:root {
+  --member-both: #3f8f6b; /* shared backbone — green */
+  --member-a: #a06bd9; /* only raga A — violet */
+  --member-b: #6bb3d9; /* only raga B — blue */
+}
+
+.swara-cell.member-both {
+  background: var(--member-both);
+  border-color: #54b487;
+}
+.swara-cell.member-only-a {
+  background: var(--member-a);
+  border-color: #b98ae0;
+}
+.swara-cell.member-only-b {
+  background: var(--member-b);
+  border-color: #8ecaeb;
+}
+.swara-cell.member-neither {
+  opacity: 0.3;
+}
+
+.comparison-legend {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  padding: 0;
+  margin: 0.75rem 0 0;
+  font-size: 0.85rem;
+  color: var(--ink-dim);
+}
+
+.comparison-legend li {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.legend-swatch {
+  width: 14px;
+  height: 14px;
+  border-radius: 4px;
+  display: inline-block;
+}
+.legend-swatch.member-both {
+  background: var(--member-both);
+}
+.legend-swatch.member-only-a {
+  background: var(--member-a);
+}
+.legend-swatch.member-only-b {
+  background: var(--member-b);
+}
+
+.comparison-pickers {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.diff-summary {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.25rem;
+  margin: 1.25rem 0;
+  padding: 0.9rem 1rem;
+  background: var(--bg-panel-2);
+  border-radius: 8px;
+}
+
+.diff-summary dt {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--ink-dim);
+}
+
+.diff-summary dd {
+  margin: 0.2rem 0 0;
+  font-weight: 700;
+  font-size: 1.05rem;
+}
+
+/* ---- Comparison columns (two raga cards side by side) ---- */
+.comparison-columns {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+@media (max-width: 640px) {
+  .comparison-columns {
+    grid-template-columns: 1fr; /* stack on narrow / mobile screens */
+  }
+}
+
+.raga-column {
+  background: var(--bg-panel-2);
+  border: 1px solid #3a2c54;
+  border-radius: var(--radius);
+  padding: 1rem;
+}
+
+.raga-column h3 {
+  margin: 0 0 0.5rem;
+  color: var(--accent);
+}
+
+.phrase-play-row {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin-bottom: 0.4rem;
+  flex-wrap: wrap;
+}
+
+.phrase-play-row .phrase-button {
+  min-width: 110px;
+  text-align: left;
+}
+
+/* In the compare columns the phrase rows have no text label — collapse it. */
+.phrase-play-row .phrase-label {
+  display: none;
+}
+
+.tempo-panel {
+  padding-top: 0.9rem;
+  padding-bottom: 0.9rem;
+}
+
 /* ---- Footer ---- */
 .app-footer {
   margin-top: 2rem;
