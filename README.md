@@ -4,7 +4,7 @@ An interactive web app for exploring **Hindustani classical music**. Built with
 Vite + React + TypeScript and [Tone.js](https://tonejs.github.io/) for audio.
 No backend — everything runs in the browser.
 
-This is being built in phases. **Phases 1–3 are implemented.**
+This is being built in phases. **Phases 1–4 are implemented.**
 
 ## Run it
 
@@ -36,6 +36,10 @@ go to **Settings → Pages → Build and deployment → Source** and choose
   selected raga highlighted, and buttons to play the aroha / avaroha / pakad
   over the drone — each note lights up on the strip in real time. Adjustable
   tempo.
+- **Phase 4 — Raga comparison.** A "Compare" tab overlays two ragas on one
+  strip, colour-coded by membership (shared / only A / only B), with a swara
+  diff summary and side-by-side facts plus per-raga phrase playback over the
+  shared drone.
 
 ## Musical assumptions (read me!)
 

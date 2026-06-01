@@ -1,9 +1,14 @@
 /**
  * useSequencer — React glue around the Sequencer engine.
  *
- * Tracks which phrase is currently playing and which note index within it is
- * sounding right now, so the UI can both disable the right buttons and light up
- * the scale strip in real time.
+ * Generalised in Phase 4: instead of only knowing about a single raga's three
+ * phrases, the hook plays any labelled "track" identified by an arbitrary
+ * string id. In the Explore view a track id is just the phrase kind
+ * ("aroha"); in the Compare view it is namespaced per raga ("A:aroha"), so the
+ * UI can tell which of two ragas is currently sounding.
+ *
+ * It also exposes the note sounding RIGHT NOW (`activeNote`) so any view can
+ * light up a scale strip without re-deriving the note from its own state.
  */
 
 import { useCallback, useEffect, useRef, useState } from "react";
@@ -16,10 +21,13 @@ export type PhraseKind = "aroha" | "avaroha" | "pakad";
 
 export function useSequencer() {
   const seqRef = useRef<Sequencer | null>(null);
-  /** Index into the currently-playing phrase, or null when idle. */
+  /** The notes of the track currently playing, so we can resolve the live note. */
+  const notesRef = useRef<RagaNote[]>([]);
+
+  /** Id of the track playing, or null when idle. */
+  const [activeTrack, setActiveTrack] = useState<string | null>(null);
+  /** Index into the playing track, or null when idle. */
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
-  /** Which phrase is playing, or null when idle. */
-  const [playingPhrase, setPlayingPhrase] = useState<PhraseKind | null>(null);
 
   useEffect(() => {
     const seq = new Sequencer();
@@ -31,11 +39,17 @@ export function useSequencer() {
   }, []);
 
   const play = useCallback(
-    async (phrase: PhraseKind, notes: RagaNote[], saFreq: number, bpm: number) => {
+    async (
+      trackId: string,
+      notes: RagaNote[],
+      saFreq: number,
+      bpm: number,
+    ) => {
       await startAudio(); // must run inside the user gesture
       const seq = seqRef.current;
       if (!seq) return;
-      setPlayingPhrase(phrase);
+      notesRef.current = notes;
+      setActiveTrack(trackId);
       seq.play({
         notes,
         saFreq,
@@ -43,7 +57,7 @@ export function useSequencer() {
         onNoteStart: (index) => setActiveIndex(index),
         onComplete: () => {
           setActiveIndex(null);
-          setPlayingPhrase(null);
+          setActiveTrack(null);
         },
       });
     },
@@ -53,8 +67,13 @@ export function useSequencer() {
   const stop = useCallback(() => {
     seqRef.current?.stop();
     setActiveIndex(null);
-    setPlayingPhrase(null);
+    setActiveTrack(null);
   }, []);
 
-  return { activeIndex, playingPhrase, play, stop };
+  // The note sounding right now. Derived each render from the live index and
+  // the notes handed to `play`, so it always matches what the ear hears.
+  const activeNote: RagaNote | null =
+    activeIndex !== null ? (notesRef.current[activeIndex] ?? null) : null;
+
+  return { activeTrack, activeIndex, activeNote, play, stop };
 }
