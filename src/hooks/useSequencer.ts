@@ -17,7 +17,7 @@ import { startAudio } from "../audio/audioContext";
 import type { RagaNote } from "../music/ragas";
 
 /** Which characteristic phrase of a raga is being played. */
-export type PhraseKind = "aroha" | "avaroha" | "pakad";
+export type { PhraseKind } from "../music/ragas";
 
 export function useSequencer() {
   const seqRef = useRef<Sequencer | null>(null);

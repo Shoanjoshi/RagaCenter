@@ -32,6 +32,12 @@ export interface RagaNote {
 }
 
 /**
+ * The three characteristic melodic phrases every raga defines. Lives here in the
+ * music layer (rather than in a UI hook) so any module can refer to it.
+ */
+export type PhraseKind = "aroha" | "avaroha" | "pakad";
+
+/**
  * The ten traditional thaats (parent scales) that ragas are grouped under.
  * Kept as a union so the data stays self-documenting and typo-proof.
  */

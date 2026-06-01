@@ -4,7 +4,7 @@ An interactive web app for exploring **Hindustani classical music**. Built with
 Vite + React + TypeScript and [Tone.js](https://tonejs.github.io/) for audio.
 No backend — everything runs in the browser.
 
-This is being built in phases. **Phases 1–4 are implemented.**
+This is being built in phases. **Phases 1–5 are implemented.**
 
 ## Run it
 
@@ -40,6 +40,11 @@ go to **Settings → Pages → Build and deployment → Source** and choose
   strip, colour-coded by membership (shared / only A / only B), with a swara
   diff summary and side-by-side facts plus per-raga phrase playback over the
   shared drone.
+- **Phase 5 — Performance timeline.** A "Perform" tab showing a raga
+  performance as a proportional, colour-coded arc of sections (alap → jod →
+  jhala → composition → climax) for khyal, dhrupad, and instrumental formats.
+  Each section explains its rhythm/tempo and can play a demo of the selected
+  raga at that section's tempo, lighting a mini scale strip.
 
 ## Musical assumptions (read me!)
 

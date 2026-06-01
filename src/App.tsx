@@ -24,8 +24,9 @@ import { RagaInfo } from "./components/RagaInfo";
 import { ScaleStrip } from "./components/ScaleStrip";
 import { PlaybackControls } from "./components/PlaybackControls";
 import { ComparisonView } from "./components/ComparisonView";
+import { TimelineView } from "./components/TimelineView";
 
-type View = "explore" | "compare";
+type View = "explore" | "compare" | "perform";
 
 export default function App() {
   const [view, setView] = useState<View>("explore");
@@ -92,6 +93,14 @@ export default function App() {
         >
           Compare
         </button>
+        <button
+          role="tab"
+          aria-selected={view === "perform"}
+          className={view === "perform" ? "active" : ""}
+          onClick={() => switchView("perform")}
+        >
+          Perform
+        </button>
       </nav>
 
       <main className="app-main">
@@ -102,7 +111,7 @@ export default function App() {
           onToggle={drone.toggle}
         />
 
-        {view === "explore" ? (
+        {view === "explore" && (
           <>
             <section className="panel raga-panel">
               <h2>Explore a raga</h2>
@@ -133,33 +142,48 @@ export default function App() {
               activeIndex={activeIndex}
             />
           </>
-        ) : (
-          <ComparisonView
-            ragaA={ragaA}
-            ragaB={ragaB}
-            onChangeA={setRagaAName}
-            onChangeB={setRagaBName}
-            activeTrack={activeTrack}
-            activeIndex={activeIndex}
-            activeSemitone={activeSemitone}
-            onPlay={(trackId: string, notes: RagaNote[]) =>
-              play(trackId, notes, melodySaFreq, bpm)
-            }
-            onStop={stop}
-          />
         )}
 
         {view === "compare" && (
-          <section className="panel tempo-panel">
-            <PlaybackControls
-              bpm={bpm}
-              onBpmChange={setBpm}
-              playingPhrase={null}
-              onPlay={handlePlayPhrase}
+          <>
+            <ComparisonView
+              ragaA={ragaA}
+              ragaB={ragaB}
+              onChangeA={setRagaAName}
+              onChangeB={setRagaBName}
+              activeTrack={activeTrack}
+              activeIndex={activeIndex}
+              activeSemitone={activeSemitone}
+              onPlay={(trackId: string, notes: RagaNote[]) =>
+                play(trackId, notes, melodySaFreq, bpm)
+              }
               onStop={stop}
-              tempoOnly
             />
-          </section>
+            <section className="panel tempo-panel">
+              <PlaybackControls
+                bpm={bpm}
+                onBpmChange={setBpm}
+                playingPhrase={null}
+                onPlay={handlePlayPhrase}
+                onStop={stop}
+                tempoOnly
+              />
+            </section>
+          </>
+        )}
+
+        {view === "perform" && (
+          <TimelineView
+            ragaName={ragaName}
+            onRagaChange={setRagaName}
+            raga={raga}
+            activeTrack={activeTrack}
+            activeSemitone={activeSemitone}
+            onPlayDemo={(trackId: string, notes: RagaNote[], demoBpm: number) =>
+              play(trackId, notes, melodySaFreq, demoBpm)
+            }
+            onStop={stop}
+          />
         )}
       </main>
 
