@@ -45,6 +45,12 @@ go to **Settings → Pages → Build and deployment → Source** and choose
   jhala → composition → climax) for khyal, dhrupad, and instrumental formats.
   Each section explains its rhythm/tempo and can play a demo of the selected
   raga at that section's tempo, lighting a mini scale strip.
+- **Math tab.** The quantitative structure beneath the music: (1) *continuous
+  pitch / calculus* — meend and andolan as functions f(t) with their exact
+  derivatives f′(t), plotted and played on a continuously-ramping oscillator;
+  (2) *tuning* — just-intonation ratios vs equal temperament, in cents, with an
+  audible A/B that lets you hear the beats; (3) *samvad* — interval ratios and
+  why a raga's vadi/samvadi tend to be a consonant 4th or 5th apart.
 
 ## Musical assumptions (read me!)
 

@@ -579,6 +579,213 @@ button:disabled {
   color: #c0f0dd;
 }
 
+/* ---- Math tab ---- */
+.math-section {
+  margin-top: 1.5rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid #3a2c54;
+}
+
+.math-section h3 {
+  margin: 0 0 0.4rem;
+  color: var(--accent);
+}
+
+.math-section p {
+  color: var(--ink-dim);
+  line-height: 1.5;
+}
+
+.math-section code {
+  background: var(--bg-panel-2);
+  padding: 1px 5px;
+  border-radius: 4px;
+  color: var(--ink);
+  font-size: 0.9em;
+}
+
+.math-note {
+  font-size: 0.85rem;
+  font-style: italic;
+  color: var(--ink-dim);
+}
+
+.math-controls {
+  gap: 0.5rem 0.9rem;
+}
+
+.math-controls input[type="range"] {
+  accent-color: var(--accent);
+  max-width: 140px;
+}
+
+/* Segmented toggle buttons (meend/andolan, curve shape) */
+.seg-toggle {
+  display: inline-flex;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid #4a3a6b;
+}
+
+.seg-toggle button {
+  border: none;
+  border-radius: 0;
+  background: var(--bg-panel-2);
+  padding: 0.4rem 0.8rem;
+}
+
+.seg-toggle button.active {
+  background: var(--accent);
+  color: #2a1f0a;
+  font-weight: 700;
+}
+
+/* SVG curve plot */
+.curve-plot {
+  margin: 1rem 0 0.5rem;
+}
+
+.curve-plot svg {
+  width: 100%;
+  height: auto;
+  background: var(--bg-panel-2);
+  border-radius: 8px;
+}
+
+.plot-axis {
+  stroke: #5e4a87;
+  stroke-width: 1;
+}
+
+.plot-playhead {
+  stroke: #fff;
+  stroke-width: 1.5;
+  opacity: 0.8;
+}
+
+.plot-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin: 0.4rem 0 0;
+  font-size: 0.8rem;
+  color: var(--ink-dim);
+}
+
+.plot-key {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.plot-swatch {
+  width: 14px;
+  height: 4px;
+  border-radius: 2px;
+  display: inline-block;
+}
+
+.plot-ylabel {
+  font-style: italic;
+}
+
+/* Tuning table */
+.tuning-table {
+  margin: 0.75rem 0;
+  font-variant-numeric: tabular-nums;
+  font-size: 0.9rem;
+}
+
+.tuning-row {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr 1fr 1fr 1fr 1.2fr 0.6fr;
+  gap: 0.4rem;
+  align-items: center;
+  padding: 0.3rem 0.5rem;
+  border-radius: 6px;
+}
+
+.tuning-row:nth-child(even) {
+  background: var(--bg-panel-2);
+}
+
+.tuning-head {
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--ink-dim);
+  background: none !important;
+}
+
+.t-sym {
+  font-weight: 700;
+  font-size: 1.05rem;
+}
+
+.dev-pos {
+  color: #7fd9a8;
+}
+
+.dev-neg {
+  color: #e69b9b;
+}
+
+.mini-play {
+  padding: 0.15rem 0.4rem;
+  font-size: 0.8rem;
+  background: var(--accent);
+  color: #2a1f0a;
+  border: none;
+  border-radius: 6px;
+}
+
+/* Samvad / consonance */
+.samvad-readout {
+  background: var(--bg-panel-2);
+  padding: 0.7rem 0.9rem;
+  border-radius: 8px;
+}
+
+.samvad-readout code {
+  font-weight: 700;
+}
+
+.consonance-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  margin: 0.75rem 0;
+}
+
+.consonance-item {
+  display: grid;
+  grid-template-columns: 3rem 3rem 1fr;
+  gap: 0.6rem;
+  align-items: center;
+}
+
+.c-pair {
+  font-weight: 700;
+}
+
+.c-ratio {
+  font-variant-numeric: tabular-nums;
+  color: var(--ink-dim);
+}
+
+.c-bar {
+  background: var(--bg-panel-2);
+  border-radius: 4px;
+  height: 14px;
+  overflow: hidden;
+}
+
+.c-fill {
+  display: block;
+  height: 100%;
+  background: linear-gradient(90deg, var(--member-both), var(--accent));
+}
+
 /* ---- Footer ---- */
 .app-footer {
   margin-top: 2rem;
