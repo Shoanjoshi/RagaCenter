@@ -27,8 +27,10 @@ go to **Settings → Pages → Build and deployment → Source** and choose
 
 ## What's here
 
-- **Phase 1 — Drone.** A tanpura-style drone (Sa + Pa, with Sa reinforced an
-  octave up) on a soft sustained synth voice. Choose the pitch of Sa (C, C#, …).
+- **Phase 1 — Drone.** A tanpura-style drone whose four strings (Pa · Sa · Sa ·
+  low Sa) are *plucked in a continuous rolling cycle* using Karplus–Strong
+  plucked-string synthesis, with long ringing decays and a jivari-like shimmer —
+  rather than a held chord. Choose the pitch of Sa (C, C#, …).
 - **Phase 2 — Raga data model.** `src/music/ragas.ts` defines a typed `Raga`
   object (name, thaat, aroha, avaroha, pakad, vadi, samvadi, timeOfDay, mood),
   seeded with **Yaman, Bhairav, Bhairavi, Bhimpalasi**.
