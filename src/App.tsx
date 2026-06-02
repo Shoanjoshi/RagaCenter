@@ -25,8 +25,9 @@ import { ScaleStrip } from "./components/ScaleStrip";
 import { PlaybackControls } from "./components/PlaybackControls";
 import { ComparisonView } from "./components/ComparisonView";
 import { TimelineView } from "./components/TimelineView";
+import { MathView } from "./components/MathView";
 
-type View = "explore" | "compare" | "perform";
+type View = "explore" | "compare" | "perform" | "math";
 
 export default function App() {
   const [view, setView] = useState<View>("explore");
@@ -100,6 +101,14 @@ export default function App() {
           onClick={() => switchView("perform")}
         >
           Perform
+        </button>
+        <button
+          role="tab"
+          aria-selected={view === "math"}
+          className={view === "math" ? "active" : ""}
+          onClick={() => switchView("math")}
+        >
+          Math
         </button>
       </nav>
 
@@ -185,6 +194,8 @@ export default function App() {
             onStop={stop}
           />
         )}
+
+        {view === "math" && <MathView saFreq={melodySaFreq} raga={raga} />}
       </main>
 
       <footer className="app-footer">
